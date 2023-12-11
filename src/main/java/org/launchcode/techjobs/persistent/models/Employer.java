@@ -4,23 +4,25 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @Entity
 public class Employer extends AbstractEntity {
 
-    public Employer(){}
+    @NotEmpty @NotNull @Size(min = 0, max = 60)
+    private String location;
 
-    @OneToMany
-    @JoinColumn(name = "employer_id")
-    private List<Job> jobs = new ArrayList<>();
+    @OneToMany @JoinColumn(name = "employer_id")
+    private final List<Job> jobs = new ArrayList<>();
 
-    @NotBlank
-    @Size(min=3, max = 50)
-    public String location;
+    public Employer(){};
 
+    public Employer(String location) {this.location = location;}
 
     public String getLocation() {
         return location;

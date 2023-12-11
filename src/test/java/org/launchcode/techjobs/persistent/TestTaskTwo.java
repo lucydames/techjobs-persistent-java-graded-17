@@ -347,10 +347,10 @@ public class TestTaskTwo extends AbstractTest {
         assertEquals(EmployerRepository.class, employerRepositoryField.getType(), "employerRepository must be of type EmployerRepository");
         assertNotNull(employerRepositoryField.getAnnotation(Autowired.class), "employerRepository must have the @Autowired annotation");
     }
-    //
-//    /*
-//    * Verifies that EmployerController.index is properly defined
-//    * */
+
+    /*
+     * Verifies that EmployerController.index is properly defined
+     * */
     @Test
     public void testEmployerControllerIndexMethodDefinition (@Mocked EmployerRepository employerRepository) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException, NoSuchFieldException {
         Class employerControllerClass = getClassByName("controllers.EmployerController");
@@ -390,10 +390,10 @@ public class TestTaskTwo extends AbstractTest {
         employerRepositoryField.set(employerController, employerRepository);
         indexMethod.invoke(employerController, model);
     }
-    //
-//    /*
-//    * Verify that processAddEmployerForm saves a new employer to the database
-//    * */
+
+    /*
+     * Verify that processAddEmployerForm saves a new employer to the database
+     * */
     @Test
     public void testNewEmployerIsSaved (@Mocked EmployerRepository employerRepository, @Mocked Errors errors) throws ClassNotFoundException, NoSuchMethodException, NoSuchFieldException, IllegalAccessException, InvocationTargetException {
         Class employerControllerClass = getClassByName("controllers.EmployerController");
@@ -415,10 +415,10 @@ public class TestTaskTwo extends AbstractTest {
         employerRepositoryField.set(employerController, employerRepository);
         processAddEmployerFormMethod.invoke(employerController, employer, errors, model);
     }
-    //
-//    /*
-//    * Verifies that displayViewEmployer calls findById to retrieve an employer object
-//    * */
+
+    /*
+     * Verifies that displayViewEmployer calls findById to retrieve an employer object
+     * */
     @Test
     public void testDisplayViewEmployerCallsFindById (@Mocked EmployerRepository employerRepository) throws ClassNotFoundException, NoSuchMethodException, NoSuchFieldException, IllegalAccessException, InvocationTargetException {
         Class employerControllerClass = getClassByName("controllers.EmployerController");
@@ -435,10 +435,10 @@ public class TestTaskTwo extends AbstractTest {
         employerRepositoryField.set(employerController, employerRepository);
         displayViewEmployerMethod.invoke(employerController, model, 1);
     }
-    //
-//    /*
-//     * Verifies that the skillRepository field is correctly defined
-//     * */
+
+    /*
+     * Verifies that the skillRepository field is correctly defined
+     * */
     @Test
     public void testSkillRepositoryDefinition () throws ClassNotFoundException {
         Class skillController = getClassByName("controllers.SkillController");
@@ -453,10 +453,10 @@ public class TestTaskTwo extends AbstractTest {
         assertEquals(SkillRepository.class, skillRepositoryField.getType(), "skillRepository must be of type SkillRepository");
         assertNotNull(skillRepositoryField.getAnnotation(Autowired.class), "skillRepository must have the @Autowired annotation");
     }
-    //
-//    /*
-//     * Verifies that SkillController.index is properly defined
-//     * */
+
+    /*
+     * Verifies that SkillController.index is properly defined
+     * */
     @Test
     public void testSkillControllerIndexMethodDefinition (@Mocked SkillRepository skillRepository) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException, NoSuchFieldException {
         Class skillControllerClass = getClassByName("controllers.SkillController");
@@ -496,10 +496,10 @@ public class TestTaskTwo extends AbstractTest {
         skillRepositoryField.set(skillController, skillRepository);
         indexMethod.invoke(skillController, model);
     }
-    //
-//    /*
-//     * Verify that processAddSkillForm saves a new skill to the database
-//     * */
+
+    /*
+     * Verify that processAddSkillForm saves a new skill to the database
+     * */
     @Test
     public void testNewSkillIsSaved (@Mocked SkillRepository skillRepository, @Mocked Errors errors) throws ClassNotFoundException, NoSuchMethodException, NoSuchFieldException, IllegalAccessException, InvocationTargetException {
         Class skillControllerClass = getClassByName("controllers.SkillController");
@@ -520,10 +520,10 @@ public class TestTaskTwo extends AbstractTest {
         skillRepositoryField.set(skillController, skillRepository);
         processAddSkillFormMethod.invoke(skillController, skill, errors, model);
     }
-    //
-//    /*
-//     * Verifies that displayViewSkill calls findById to retrieve an skill object
-//     * */
+
+    /*
+     * Verifies that displayViewSkill calls findById to retrieve an skill object
+     * */
     @Test
     public void testDisplayViewSkillCallsFindById (@Mocked SkillRepository skillRepository) throws ClassNotFoundException, NoSuchMethodException, NoSuchFieldException, IllegalAccessException, InvocationTargetException {
         Class skillControllerClass = getClassByName("controllers.SkillController");
@@ -540,7 +540,7 @@ public class TestTaskTwo extends AbstractTest {
         skillRepositoryField.set(skillController, skillRepository);
         displayViewSkillMethod.invoke(skillController, model, 1);
     }
-//
+
     // --- END CONTROLLER TESTS --- //
 
     /*
