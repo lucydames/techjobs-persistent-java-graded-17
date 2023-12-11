@@ -1,27 +1,23 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employer Details</title>
+</head>
+<body>
+<h2>Employer Details</h2>
 
-<body class="container  body-content">
-<h1 th:text="${'Job: ' + job.name}">Default Title</h1>
+<p th:if="${employer != null}">
+    Location: <span th:text="${employer.location}"></span>
+</p>
+<p th:unless="${employer != null}">
+    Employer not found
+</p>
 
-<nav th:replace="fragments :: page-header"></nav>
-
-<div class="job-listing">
-    <p th:text="${'ID: ' + job.id}"></p>
-    <p th:text="${'Name: ' + job.name}"></p>
-    <p>
-        Employer: <a th:href="@{'/employers/view/' + ${job.employer.id}}" th:text="${job.employer.name}"></a>
-    </p>
-    <p> Skills:
-    <ul>
-        <li th:each="skill : ${job.skills}">
-            <a th:href="@{'/skills/view/' + ${skill.id}}" th:text="${skill.name}"></a>
-        </li>
-    </ul>
-    </p>
-</div>
-
-
+<a href="/employers/edit/${employer.id}">Edit</a>
+<a href="/employers/delete/${employer.id}">Delete</a>
+<a href="/employers">Back to List</a>
 </body>
 </html>

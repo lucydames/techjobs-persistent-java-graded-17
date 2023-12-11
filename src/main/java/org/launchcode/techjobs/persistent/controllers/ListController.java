@@ -1,6 +1,7 @@
 package org.launchcode.techjobs.persistent.controllers;
 
 import org.launchcode.techjobs.persistent.models.Job;
+import org.launchcode.techjobs.persistent.models.Employer;
 import org.launchcode.techjobs.persistent.models.data.EmployerRepository;
 import org.launchcode.techjobs.persistent.models.data.JobRepository;
 import org.launchcode.techjobs.persistent.models.data.SkillRepository;
@@ -31,7 +32,7 @@ public class ListController {
 
     static HashMap<String, String> columnChoices = new HashMap<>();
 
-    public ListController () {
+    public ListController() {
 
         columnChoices.put("all", "All");
         columnChoices.put("employer", "Employer");
@@ -50,15 +51,23 @@ public class ListController {
     @RequestMapping(value = "jobs")
     public String listJobsByColumnAndValue(Model model, @RequestParam String column, @RequestParam String value) {
         Iterable<Job> jobs;
-        if (column.toLowerCase().equals("all")){
+        if (column.toLowerCase().equals("all")) {
             jobs = jobRepository.findAll();
             model.addAttribute("title", "All Jobs");
         } else {
             jobs = JobData.findByColumnAndValue(column, value, jobRepository.findAll());
             model.addAttribute("title", "Jobs with " + columnChoices.get(column) + ": " + value);
         }
-        model.addAttribute("jobs", jobs);
 
+        // Check for null before accessing the Employer
+        for (Job job : jobs) {
+            if (job.getEmployer() == null) {
+                // Handle the case where the employer is null, e.g., set a default value.
+                job.setEmployer(new Employer("No employer assigned"));
+            }
+        }
+
+        model.addAttribute("jobs", jobs);
         return "list-jobs";
     }
 }
