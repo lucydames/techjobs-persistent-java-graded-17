@@ -1,7 +1,5 @@
 package org.launchcode.techjobs.persistent;
 
-package org.launchcode.techjobs.persistent;
-
 import mockit.Expectations;
 import mockit.Mocked;
 import org.junit.jupiter.api.Test;

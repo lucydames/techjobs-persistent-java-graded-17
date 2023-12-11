@@ -1,7 +1,5 @@
 package org.launchcode.techjobs.persistent;
 
-package org.launchcode.techjobs.persistent;
-
 import mockit.Expectations;
 import mockit.Mock;
 import mockit.Mocked;
