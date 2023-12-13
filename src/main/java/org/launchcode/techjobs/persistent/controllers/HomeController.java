@@ -69,7 +69,7 @@ public class HomeController {
             model.addAttribute("job", job);
             return "view";
         } else {
-            return "redirect:/";
+            return "redirect:/"; // Redirect to the homepage or handle the case when the job is not found.
         }
     }
 }
