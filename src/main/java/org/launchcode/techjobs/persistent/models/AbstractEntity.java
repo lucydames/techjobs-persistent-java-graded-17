@@ -14,13 +14,9 @@ public abstract class AbstractEntity {
     @GeneratedValue
     private int id;
 
-    @NotBlank @Size(min = 1, max = 80)
-    public String name;
-
-    @Override
-    public String toString(){
-        return name;
-    }
+    @NotBlank
+    @Size(min = 10)
+    private String name;
 
     public int getId() {
         return id;
@@ -35,6 +31,11 @@ public abstract class AbstractEntity {
     }
 
     @Override
+    public String toString() {
+        return name;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -46,7 +47,5 @@ public abstract class AbstractEntity {
     public int hashCode() {
         return Objects.hash(id);
     }
-
-
 
 }
